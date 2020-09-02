@@ -1,0 +1,40 @@
+<apex:page standardController="Con_Log__c" extensions="controller_newNote" sidebar="False" showHeader="FALSE">
+
+    <apex:form >
+    
+        <apex:pageBlock >
+        
+            <apex:pageBlockButtons >
+            
+                <apex:commandButton value="Save" action="{!SaveMe}"/>
+                <apex:commandButton value="Cancel" action="{!CancelMe}"/>
+                
+            </apex:pageBlockButtons>
+            
+            <apex:pageblockSection >
+                
+                <apex:inputfield value="{!Con_Log__c.Notes__c}" style="width:800px;height:50px" />
+            
+            </apex:pageblockSection>
+        
+        <apex:pageblockSection title="Notify Users" columns="1">               
+                         <style>
+                            table.customStyle{
+                                width: 0% !important;
+                                text-align: ;
+                                margin: 0 auto;
+                            }
+                        </style>                   
+                <c:MultiselectPicklist leftLabel="Active Users"
+                    leftOption="{!ActiveUsers}"
+                    rightLabel="Selected Users"
+                    rightOption="{!selectedUsers}"
+                    size="5"
+                    width="150px"/>
+            </apex:pageblockSection>
+            
+        </apex:pageBlock>
+    </apex:form>
+   
+
+</apex:page>
