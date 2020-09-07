@@ -13,10 +13,6 @@ public class Controller_ViewNotes {
     
     public Controller_ViewNotes(){
         opportunityID = ApexPages.currentPage().getParameters().get('id');
-
-        
-  
-        
     }
     
     
@@ -40,7 +36,6 @@ public class Controller_ViewNotes {
         setCon.setpagesize(500);
         return (List<Con_Log__c>) setCon.getRecords();
     }
-    
     
     public PageReference newNote() {
     

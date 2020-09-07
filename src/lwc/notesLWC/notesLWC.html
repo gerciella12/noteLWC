@@ -1,7 +1,74 @@
-<!--
- - Created by gb on 9/2/20.
- -->
-
-<!-- Notes Lwc -->
 <template>
+    <!--<div class={containerClass}> -->
+    <lightning-card title="Notes" icon-name="custom:custom14">
+        <div style="height: 500px;">
+
+                <template if:true={rows}>
+                    <lightning-datatable columns={columns}
+                             data={rows}
+                             key-field="id"
+                             hide-checkbox-column="true"
+                             show-row-number-column="true">
+                    </lightning-datatable>
+                </template>
+                <template if:true={error}>
+                {error}
+                </template>
+
+         <lightning-button variant="brand"
+                           label="New Note"
+                           title="New Note"
+                           onclick={openModal}
+                           class="slds-m-left_x-small">
+         </lightning-button>
+          <template if:true={isModalOpen}>
+                          <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                 <div class="slds-modal__container">
+                     <header class="slds-modal__header">
+                         <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                             <lightning-icon icon-name="utility:close"
+                                             alternative-text="close"
+                                             variant="inverse"
+                                             size="small" ></lightning-icon>
+                             <span class="slds-assistive-text">Close</span>
+                         </button>
+                         <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">New Note</h2>
+                     </header>
+                     <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                         <div class="slds-m-around_medium">
+                             <p class="slds-text-body_regular">Please check your note before saving</p>
+                         </div>
+                         <div>
+                             <lightning-layout-item size="12" large-device-size="7" medium-device-size="12" small-device-size="12">
+                                 <lightning-layout>
+                                     <lightning-layout-item size="12">
+                                         <lightning-input type="LongTextArea" min="o" max="600" value={note} name="note" label="Note" onchange={handleChanges}></lightning-input>
+                                     </lightning-layout-item>
+                                 </lightning-layout>
+                             </lightning-layout-item>
+                               <!--  <template if:true={emailValue.data}>
+                                     <lightning-dual-listbox name="Users"
+                                                             label="Select Users"
+                                                             source-label="Available"
+                                                             selected-label="Selected"
+                                                             field-level-help="This is a dual listbox"
+                                                             options={emailValue.data.values}
+                                                             onchange={handleChanges1}></lightning-dual-listbox>
+                                 </template><br/>
+                                 <div class="slds-box" >
+                                     <p>Selected values are: <b style="color:blue;">{selected}</b></p>
+                                 </div> -->
+                     <footer class="slds-modal__footer">
+                         <button class="slds-button slds-button_neutral" onclick={closeModal} title="Cancel">Cancel</button>
+                         <button class="slds-button slds-button_brand" onclick={saveNote} title="Save & Send">Save</button>
+                     </footer>
+                         </div>
+                 </div>
+                 </div>
+             </section>
+             <div class="slds-backdrop slds-backdrop_open"></div>
+</template>
+        </div>
+</lightning-card>
+  <!--  </div> -->
 </template>
